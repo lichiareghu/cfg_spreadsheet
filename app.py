@@ -11,9 +11,14 @@ def main():
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
         #data = read_data(uploaded_file)
-        #st.write(data)
         st.subheader("CSV File Contents:")
         st.dataframe(df.head(10))
+
+        #st.subheader("Calculations:")
+        #len,sales = calculate_sales(df)
+        #st.write(f'sales_figures:{sales}')
+        user_input = st.text_input("Enter some text:")
+        total_sales = df[user_input].sum()
         #total_sales = calculate_sales()
         #st.write(f'The total sales across all {len(total_sales)} months is {sum(total_sales)}.')
 
