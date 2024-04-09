@@ -22,7 +22,7 @@ def collect_data(data, values):
     collected_data = []
     for row in data:
         value = row[values]
-        collected_data.append(value)
+        collected_data.append(float(value))
     return collected_data
 
 
@@ -30,7 +30,7 @@ def analyse_data(data, values_column, operation):
     """Complete analysis and return result
     inputs: data-> dict of column names and values
             values_column-> 'str' type name of the column to be used for numerical calculations
-            operation-> 'str' type value representing the names of the operation
+            operation-> 'list' type value representing the names of the operation
     outputs: result_data-> Dict with keys as operation and results as values"""
     # Initialise the result dict
     result_data = {}
@@ -38,9 +38,11 @@ def analyse_data(data, values_column, operation):
     # Get the results as list
     workable_data = collect_data(data, values_column)
 
-    # Get the results
-    result_data[operation] = get_result(workable_data, operation)
+    # Iterate through the list of operations and get the results
+    for op in operation:
+        result_data[op] = get_result(workable_data, op)
 
+    # Return the data
     return result_data
 
 
@@ -79,17 +81,14 @@ def average(data):
     # output: float
     return sum(data)/len(data)
 
-
-
-
 def median(data):
-#     input: list of values
-#     output: float
+     """input: list of values
+        output: float
+     """
     sorted_data = sorted(data)
     lenght = len(sorted_data)
     if lenght % 2==0:
         return (sorted_data[lenght//2])
-print(median([3,4,5]))
 
 
 
