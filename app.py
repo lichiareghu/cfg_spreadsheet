@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from functions import read_data, analyse_data
-import os
+
 
 def main():
     st.title("Spreadsheet Analysis")
@@ -35,7 +35,7 @@ def main():
             # Define the operations
             operations = ['Total', 'Average', 'Median', 'Minimum', 'Maximum']
             operation = st.selectbox("Select the operation", operations)
-            #operation = st.multiselect("Select the operation", operations)
+            # operation = st.multiselect("Select the operation", operations)
 
             # Create a button
             button_clicked = st.button("Calculate")
@@ -44,10 +44,14 @@ def main():
         with col2:
             st.header("Outputs")
             if button_clicked:
-                result_df = analyse_data(data,values_column,operation)
+                result_dict = analyse_data(data, values_column, operation)
+
+                # Convert the results into dataframe
+                result_df = pd.DataFrame(result_dict.items(), columns=['Operation', 'Results'])
 
                 st.write("Data Analysis")
                 st.dataframe(result_df)
+
 
 if __name__ == "__main__":
     main()
