@@ -66,10 +66,13 @@ def get_result(values, operation):
     return result
 
 
-def total(data):
-    result = 0
-    return result
-
+def total(values):
+    """
+    This function takes a list of values and returns the total
+    input : list of values
+    output : int or float
+    """
+    return sum(values)
 
 def average(data):
     result = 0
@@ -89,3 +92,5 @@ def minimum(data):
 def maximum(data):
     result = 0
     return result
+
+
