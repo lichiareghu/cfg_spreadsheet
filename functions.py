@@ -75,13 +75,23 @@ def total(data):
     return sum(data)
 
 def average(data):
-    result = 0
-    return result
+    # input: list of values
+    # output: float
+    return sum(data)/len(data)
+
+
 
 
 def median(data):
-    result = 0
-    return result
+#     input: list of values
+#     output: float
+    sorted_data = sorted(data)
+    lenght = len(sorted_data)
+    if lenght % 2==0:
+        return (sorted_data[lenght//2])
+print(median([3,4,5]))
+
+
 
 
 def minimum(data):
