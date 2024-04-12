@@ -34,8 +34,8 @@ def main():
 
             # Define the operations
             operations = ['Total', 'Average', 'Median', 'Minimum', 'Maximum']
-            operation = st.selectbox("Select the operation", operations)
-            # operation = st.multiselect("Select the operation", operations)
+            #operation = st.selectbox("Select the operation", operations)
+            operation = st.multiselect("Select the operation", operations)
 
             # Create a button
             button_clicked = st.button("Calculate")
