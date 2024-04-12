@@ -74,23 +74,25 @@ def total(data):
     """
     return sum(data)
 
+
 def average(data):
     # input: list of values
     # output: float
     return sum(data)/len(data)
 
 
-
-
 def median(data):
-#     input: list of values
-#     output: float
+    # input: list of values
+    # output: float
     sorted_data = sorted(data)
-    lenght = len(sorted_data)
-    if lenght % 2==0:
-        return (sorted_data[lenght//2])
-print(median([3,4,5]))
+    length = len(sorted_data)
+    if length % 2 == 0:
+        return (sorted_data[length // 2 - 1] + sorted_data[length // 2]) / 2
+    else:
+        return sorted_data[length // 2]
 
+
+print(median([4,5]))
 
 
 
