@@ -119,7 +119,6 @@ def average(data):
     return round(sum(data) / len(data), 2)
 
 
-
 def median(data):
     # input: list of values
     # output: float
@@ -130,8 +129,23 @@ def median(data):
     else:
         return sorted_data[length // 2]
 
+def variance(data):
+    """
+    This function takes a list of values and returns the variance
+    input : list of values
+    output : float
+    """
+    average = sum(data) / len(data)
+    return sum((x - average) ** 2 for x in data) / len(data)
 
-print(median([4,5]))
+
+def standard_deviation(data):
+    """
+    This function takes a list of values and returns the standard deviation
+    input : list of values
+    output : float
+    """
+    return variance(data) ** 0.5
 
 def minimum(data):
     """
@@ -159,21 +173,47 @@ def range_of_data(data):
     return max(data) - min(data)
 
 
-def variance(data):
+def percentage_change(data, values_column):
     """
-    This function takes a list of values and returns the variance
-    input : list of values
-    output : float
+    This function takes a dict of data and a grouping column and a value column. It then returns the percentage change
+    input :
+    data: dict of values
+    grouping_column: str
+    values_column: str
+    output : dict of values
     """
-    average = sum(data) / len(data)
-    return sum((x - average) ** 2 for x in data) / len(data)
+    list_changes = [0]
+    data = convert_values(data, values_column)
+    for i in range(1, len(data)):
+        previous_month = float(data[i - 1][values_column])
+        current_month = float(data[i][values_column])
+        if previous_month and previous_month != 0:
+            change_as_percentage = round(((current_month - previous_month) / previous_month) * 100, 2)
+        else:
+            change_as_percentage = 0
+        list_changes.append(change_as_percentage)
+    return list_changes
 
 
-def standard_deviation(data):
+def get_profile(df):
     """
-    This function takes a list of values and returns the standard deviation
-    input : list of values
-    output : float
+    This function collects the data in a dataframe and generates a profile for the data
+    :param df: Input data frame
+    :return: Dict of summary
     """
-    return variance(data) ** 0.5
-
+    df_numeric = pd.DataFrame(columns=df.columns)
+    for i in df.columns:
+        df_numeric[i] = collect_numerical(df[i].tolist())
+    result = {'Columns': [i for i in df.columns],
+              'Data Type': [df[i].dtype.name for i in df],
+              'No of values': [len(df[i].dropna()) for i in df],
+              'No of missing values': [df[i].isna().sum() for i in df],
+              'No of unique values': [len(df[i].unique()) for i in df],
+              'Maximum value': [maximum(df_numeric[i].tolist()) for i in df],
+              'Minimum value': [minimum(df_numeric[i].tolist()) for i in df],
+              'Mean': [round(df[df[i].notna()][i].mean(), 2) if df[i].dtype.name != 'object' else 0 for i in df],
+              'Std_dev': [round(df[df[i].notna()][i].std(), 2) if df[i].dtype.name != 'object' else 0 for i in df]
+              # ,'Quantile': [df[df[i].notna()][i].quantile([.25, .5, .75])
+              # if df[i].dtype.name != 'object' else 0 for i in df]
+              }
+    return result
