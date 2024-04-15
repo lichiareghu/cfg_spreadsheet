@@ -112,13 +112,16 @@ def total(data):
     return total
 
 
+
 def average(data):
     # input: list of values
     # output: float
     return round(sum(data) / len(data), 2)
 
 
+
 def median(data):
+
     """input: list of values
             output: float
         """
@@ -128,6 +131,7 @@ def median(data):
         return round((sorted_data[length // 2 - 1] + sorted_data[length // 2]) / 2, 2)
     else:
         return round(sorted_data[length // 2], 2)
+
 
 
 def minimum(data):
