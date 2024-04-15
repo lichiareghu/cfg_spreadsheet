@@ -97,7 +97,6 @@ def median(data):
 print(median([4,5]))
 
 
-
 def minimum(data):
     """
     This function takes a list of values and returns the minimum
@@ -116,3 +115,29 @@ def maximum(data):
     return max(data)
 
 
+def range_of_data(data):
+    """
+    This function takes a list of values and returns the range
+    input : list of values
+    output : int or float
+    """
+    return max(data) - min(data)
+
+
+def variance(data):
+    """
+    This function takes a list of values and returns the variance
+    input : list of values
+    output : float
+    """
+    average = sum(data) / len(data)
+    return sum((x - average) ** 2 for x in data) / len(data)
+
+
+def standard_deviation(data):
+    """
+    This function takes a list of values and returns the standard deviation
+    input : list of values
+    output : float
+    """
+    return variance(data) ** 0.5
