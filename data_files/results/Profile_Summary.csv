@@ -1,0 +1,11 @@
+Columns,Data Type,No of values,No of missing values,No of unique values,Maximum value,Minimum value,Mean_func,Variance,Std_dev_func,Range
+Date,object,20819,0,86,0.0,0.0,0.0,0.0,0.0,0.0
+County,object,20733,86,312,0.0,0.0,0.0,0.0,0.0,0.0
+State,object,20733,86,51,0.0,0.0,0.0,0.0,0.0,0.0
+Vehicle Primary Use,object,20819,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+Battery Electric Vehicles (BEVs),int64,20819,0,1209,72333.0,0.0,217.52,5191464.7,2278.53,72333.0
+Plug-In Hybrid Electric Vehicles (PHEVs),int64,20819,0,935,17501.0,0.0,80.06,417778.26,646.37,17501.0
+Electric Vehicle (EV) Total,int64,20819,0,1409,89834.0,0.0,297.58,8499759.9,2915.5,89834.0
+Non-Electric Vehicle Total,int64,20819,0,7096,1399823.0,0.0,25098.06,11391265746.6,106732.44,1399823.0
+Total Vehicles,int64,20819,0,7095,1430937.0,1.0,25395.64,11899175556.99,109085.96,1430936.0
+Percent Electric Vehicles,int64,20819,0,25,100.0,0.0,4.14,122.37,11.06,100.0
